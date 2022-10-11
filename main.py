@@ -7,8 +7,9 @@ root.geometry("1000x1000")
 root.title('Source Code to UML converter')
 my_label = tk.Label(root, text="Welcome to Source Code Converter", font=("Arial Bold", 40))
 my_label1 = tk.Label(root, text="How would you like to Continue?", font=("Arial Bold", 40))
-my_label1.pack()
+
 my_label.pack()
+my_label1.pack()
 
 #Function for uploading file
 def UploadAction(event=None):
