@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import filedialog
+from pylint import pyreverse as pr
+
 
 # Declare root and widgets
 root = tk.Tk()
@@ -42,7 +44,6 @@ def UploadAction(event=None):
     if inputtxt.winfo_ismapped() == TRUE:
         inputtxt.forget()
 
-
     # WIll show contents of uploaded file
     text_box.pack(expand=True, side=LEFT, anchor='nw', padx=5, pady=2)
     text_box.insert('end', txt)
@@ -51,11 +52,6 @@ def UploadAction(event=None):
 
 # function for pasting your code
 def enterr(event=NONE):
-    # Input box to paste code
-    # if inputtxt.winfo_ismapped() == TRUE:
-    #     inputtxt.forget()
-    #     btn3.forget()
-    # else:
     # REMOVE 'UPLOAD A FILE INSTEAD TEXTBOX
     if text_box.winfo_ismapped() == TRUE:
         text_box.forget()
@@ -64,8 +60,7 @@ def enterr(event=NONE):
 
     inputtxt.pack(padx=5, pady=2, side=tk.LEFT)
     btn3.pack(side='left', anchor='nw')
-
-
+    # TODO: what do you do with the contents of the box
 
 
 # MAIN MENU BUTTONS AT THE TOP
