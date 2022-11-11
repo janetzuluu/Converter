@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 from tkinter import filedialog
 from pylint import pyreverse as pr
+import os
 
 
 # Declare root and widgets
@@ -69,5 +70,10 @@ btn2.pack()
 
 btn1 = tk.Button(root, text='Upload a file instead', command=UploadAction)
 btn1.pack(padx=8, pady=8)
+
+os.system("pyreverse main.py")
+print("I executed the pyreverse!")
+os.system(f"dot -Tpng classes.dot > uml.png")
+print("I am creating your uml diagram!")
 
 root.mainloop()
