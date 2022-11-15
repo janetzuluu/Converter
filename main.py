@@ -31,8 +31,18 @@ my_label1.pack()
 
 # Function for converting code
 def converting(file):
+    # lets us grab only the python file name from the path
     file = file.split('/')[-1]
-    print(file)
+
+    # terminal commands
+    os.system(f"pyreverse {file}") # TODO cannot find file in directory
+    print("I executed the pyreverse!")
+
+    # converting into an image
+    imageName = file.split('.')[0]
+    os.system(f"dot -Tpng classes.dot > {imageName}_uml.png")
+    print("I am creating your uml diagram!")
+
     print("Hi, im converting your file!")
 
 
@@ -88,11 +98,6 @@ btn2.pack()
 
 btn1 = tk.Button(root, text='Upload a file instead', command=UploadAction)
 btn1.pack(padx=8, pady=8)
-
-os.system("pyreverse main.py")
-print("I executed the pyreverse!")
-os.system(f"dot -Tpng classes.dot > uml.png")
-print("I am creating your uml diagram!")
 
 root.mainloop()
 
