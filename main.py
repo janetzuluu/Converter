@@ -4,16 +4,13 @@ from tkinter import filedialog
 from pylint import pyreverse as pr
 import os
 
-
 # Declare root and widgets
 root = tk.Tk()
 root.geometry("1000x1000")
 root.title('Source Code to UML converter')
 my_label = tk.Label(root, text="Welcome to Source Code Converter", font=("Arial Bold", 40))
 my_label1 = tk.Label(root, text="How would you like to Continue?", font=("Arial Bold", 40))
-
-# OUR ONLY CONVERT BUTTON
-btn3 = tk.Button(root, text='Convert')
+fileName = []
 
 # 'paste code' textbox
 inputtxt = tk.Text(root,
@@ -32,14 +29,32 @@ my_label.pack()
 my_label1.pack()
 
 
+# Function for converting code
+def converting(file):
+    print(file)
+    print("Hi, im converting your file!")
+
+
+# OUR ONLY CONVERT BUTTON
+# To pass a function with a vairable, you need to call the lambda keyword
+# Command variable works properly with functions without any arguments passed to it
+# Lambda functions allows python to pass a function with an argument to the command variable
+btn3 = tk.Button(root, text='Convert', command=lambda:converting(fileName))
+# if uploading file convert
+# TODO create onClick button event; when button clicked -> file gets terminal command
+
+
 # Function for uploading file
 def UploadAction(event=None):
     filename = filedialog.askopenfilename()
+    fileName.append(filename)
     file = open(filename, 'r')
     txt = file.read()
     # my_label5 = tk.Label(root, text=txt, font=("Arial Bold", 20))
     # my_label5.pack()
     file.close()
+    # insert 'convert' button
+    btn3.pack(side='left', anchor='nw')
 
     # TO REMOVE TEXTBOX FROM 'PASTE CODE'
     if inputtxt.winfo_ismapped() == TRUE:
@@ -49,6 +64,8 @@ def UploadAction(event=None):
     text_box.pack(expand=True, side=LEFT, anchor='nw', padx=5, pady=2)
     text_box.insert('end', txt)
     text_box.config(state='disabled')
+
+    return file
 
 
 # function for pasting your code
