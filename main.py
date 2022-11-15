@@ -31,6 +31,7 @@ my_label1.pack()
 
 # Function for converting code
 def converting(file):
+    file = file.split('/')[-1]
     print(file)
     print("Hi, im converting your file!")
 
@@ -39,7 +40,8 @@ def converting(file):
 # To pass a function with a vairable, you need to call the lambda keyword
 # Command variable works properly with functions without any arguments passed to it
 # Lambda functions allows python to pass a function with an argument to the command variable
-btn3 = tk.Button(root, text='Convert', command=lambda:converting(fileName))
+# we put the index so that when we split() we will not get the ending list bracket ']'
+btn3 = tk.Button(root, text='Convert', command=lambda:converting(str(fileName[0])))
 # if uploading file convert
 # TODO create onClick button event; when button clicked -> file gets terminal command
 
@@ -47,12 +49,13 @@ btn3 = tk.Button(root, text='Convert', command=lambda:converting(fileName))
 # Function for uploading file
 def UploadAction(event=None):
     filename = filedialog.askopenfilename()
+
+    # adds file path to list
     fileName.append(filename)
     file = open(filename, 'r')
     txt = file.read()
-    # my_label5 = tk.Label(root, text=txt, font=("Arial Bold", 20))
-    # my_label5.pack()
     file.close()
+
     # insert 'convert' button
     btn3.pack(side='left', anchor='nw')
 
@@ -64,8 +67,6 @@ def UploadAction(event=None):
     text_box.pack(expand=True, side=LEFT, anchor='nw', padx=5, pady=2)
     text_box.insert('end', txt)
     text_box.config(state='disabled')
-
-    return file
 
 
 # function for pasting your code
@@ -94,3 +95,6 @@ os.system(f"dot -Tpng classes.dot > uml.png")
 print("I am creating your uml diagram!")
 
 root.mainloop()
+
+# TODO have user download the file
+# TODO store user pasted text input and save as file so it can be called using pyreverse terminal command
