@@ -11,3 +11,10 @@ Software that can convert your python source code into a beautiful UML diagram!
 # How does it work?
 ------------------
 You have the option of choosing between copy/paste your python code into a textbox or upload your python file from your device.
+
+
+Team Members
+-----------------
+Vanessa Martinez
+Janet Zulu
+Jovanna 
