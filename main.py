@@ -31,15 +31,14 @@ my_label1.pack()
 
 # Function for converting code
 def converting(file):
-    # lets us grab only the python file name from the path
-    file = file.split('/')[-1]
-
     # terminal commands
-    os.system(f"pyreverse {file}") # TODO cannot find file in directory
+    os.system(f"pyreverse {file}")
     print("I executed the pyreverse!")
 
     # converting into an image
     imageName = file.split('.')[0]
+    currentDir = os.getcwd()
+    os.chdir(currentDir)
     os.system(f"dot -Tpng classes.dot > {imageName}_uml.png")
     print("I am creating your uml diagram!")
 
