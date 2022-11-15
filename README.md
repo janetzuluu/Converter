@@ -15,6 +15,6 @@ You have the option of choosing between copy/paste your python code into a textb
 
 Team Members
 -----------------
-Vanessa Martinez
-Janet Zulu
-Jovanna 
+- Vanessa Martinez
+- Janet Zulu
+- Jovanna 
