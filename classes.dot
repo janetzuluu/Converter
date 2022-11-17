@@ -1,5 +1,6 @@
 digraph "classes" {
 rankdir=BT
 charset="utf-8"
-"AESCipher.AESCipher" [color="black", fontcolor="black", label="{AESCipher|bs : int\lkey : bytes\l|decrypt(enc)\lencrypt(raw)\l}", shape="record", style="solid"];
+"test.ArithmeticOperations" [color="black", fontcolor="black", label="{ArithmeticOperations|sum_ : int\l|get_sum(num1, num2)\l}", shape="record", style="solid"];
+"test.PrintData" [color="black", fontcolor="black", label="{PrintData|data : str\l|print_data(data)\l}", shape="record", style="solid"];
 }
