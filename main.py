@@ -1,104 +1,121 @@
-from tkinter import *
-import tkinter as tk
-from tkinter import filedialog
-from pylint import pyreverse as pr
-import os
+# mmm Ducks...
+# THIS IS A DUCK SIMULATOR USING THE STRATEGY DESIGN
 
-# Declare root and widgets
-root = tk.Tk()
-root.geometry("1000x1000")
-root.title('Source Code to UML converter')
-my_label = tk.Label(root, text="Welcome to Source Code Converter", font=("Arial Bold", 40))
-my_label1 = tk.Label(root, text="How would you like to Continue?", font=("Arial Bold", 40))
-fileName = []
-
-# 'paste code' textbox
-inputtxt = tk.Text(root,
-                   height=30,
-                   width=45)
-
-# 'upload file instead' textbox
-text_box = Text(
-    root,
-    height=35,
-    width=49
-)
-
-# Present needed widgets in root
-my_label.pack()
-my_label1.pack()
+# FLYING
+class FlyBehavior:
+    def fly(self):
+        pass
 
 
-# Function for converting code
-def converting(file):
-    # terminal commands
-    os.system(f"pyreverse {file}")
-    print("I executed the pyreverse!")
-
-    # converting into an image
-    imageName = file.split('.')[0]
-    currentDir = os.getcwd()
-    os.chdir(currentDir)
-    os.system(f"dot -Tpng classes.dot > {imageName}_uml.png")
-    print("I am creating your uml diagram!")
-
-    print("Hi, im converting your file!")
+class FlyWithWings(FlyBehavior):
+    def fly(self):
+        print("I'm flying!")
 
 
-# OUR ONLY CONVERT BUTTON
-# To pass a function with a vairable, you need to call the lambda keyword
-# Command variable works properly with functions without any arguments passed to it
-# Lambda functions allows python to pass a function with an argument to the command variable
-# we put the index so that when we split() we will not get the ending list bracket ']'
-btn3 = tk.Button(root, text='Convert', command=lambda:converting(str(fileName[0])))
-# if uploading file convert
-# TODO create onClick button event; when button clicked -> file gets terminal command
+class FlyNoWay(FlyBehavior):
+    def fly(self):
+        print("I cannot fly.")
 
 
-# Function for uploading file
-def UploadAction(event=None):
-    filename = filedialog.askopenfilename()
-
-    # adds file path to list
-    fileName.append(filename)
-    file = open(filename, 'r')
-    txt = file.read()
-    file.close()
-
-    # insert 'convert' button
-    btn3.pack(side='left', anchor='nw')
-
-    # TO REMOVE TEXTBOX FROM 'PASTE CODE'
-    if inputtxt.winfo_ismapped() == TRUE:
-        inputtxt.forget()
-
-    # WIll show contents of uploaded file
-    text_box.pack(expand=True, side=LEFT, anchor='nw', padx=5, pady=2)
-    text_box.insert('end', txt)
-    text_box.config(state='disabled')
+# QUACK
+class QuackBehavior:
+    def quack(self):
+        pass
 
 
-# function for pasting your code
-def enterr(event=NONE):
-    # REMOVE 'UPLOAD A FILE INSTEAD TEXTBOX
-    if text_box.winfo_ismapped() == TRUE:
-        text_box.forget()
-        # clear the textbox before it displays
-        inputtxt.delete("1.0", "end")
-
-    inputtxt.pack(padx=5, pady=2, side=tk.LEFT)
-    btn3.pack(side='left', anchor='nw')
-    # TODO: what do you do with the contents of the box
+class Quack(QuackBehavior):
+    def quack(self):
+        print("Quack.\n")
 
 
-# MAIN MENU BUTTONS AT THE TOP
-btn2 = tk.Button(root, text='Paste My Code', command=enterr)
-btn2.pack()
+class Squeak(QuackBehavior):
+    def quack(self):
+        print("Squeak.\n")
 
-btn1 = tk.Button(root, text='Upload a file instead', command=UploadAction)
-btn1.pack(padx=8, pady=8)
 
-root.mainloop()
+class MuteQuack(QuackBehavior):
+    def quack(self):
+        print("....\n")
 
-# TODO have user download the file
-# TODO store user pasted text input and save as file so it can be called using pyreverse terminal command
+
+# DUCK
+class Duck:
+    # all functions that ducks have
+    # variables / attributes
+    flyBehavior = FlyBehavior()
+    quackBehavior = QuackBehavior()
+
+    def __int__(self):
+        self.duckType = ''
+
+    # operations / functions
+    def display(self):
+        print(f"I'm a {self.duckType} Duck.")
+
+    def performFly(self):
+        self.flyBehavior.fly()
+
+    def performQuack(self):
+        self.quackBehavior.quack()
+
+    def swim(self):
+        print("All ducks float, even decoys!")
+
+
+# MALLARD DUCK
+class MallardDuck(Duck):
+    flyBehavior = FlyWithWings()
+    quackBehavior = Quack()
+    duckType = "Mallard"
+
+
+class RedDuck(Duck):
+    flyBehavior = FlyWithWings()
+    quackBehavior = Quack()
+    duckType = "Red"
+
+
+class RubberDuck(Duck):
+    flyBehavior = FlyNoWay()
+    quackBehavior = Squeak()
+    duckType = "Rubber"
+
+
+class DecoyDuck(Duck):
+    flyBehavior = FlyNoWay()
+    quackBehavior = MuteQuack()
+    duckType = "Decoy"
+
+
+def main():
+    print("Testing the Duck Simulator.\n")
+    # object
+    # MALLARD
+    mallard = MallardDuck()
+    mallard.display()
+    mallard.swim()
+    mallard.performFly()
+    mallard.performQuack()
+    # RED
+    red = RedDuck()
+    red.display()
+    red.swim()
+    red.performFly()
+    red.performQuack()
+    # RUBBER
+    rubber = RubberDuck()
+    rubber.display()
+    rubber.swim()
+    rubber.performFly()
+    rubber.performQuack()
+    # DECOY
+    decoy = DecoyDuck()
+    decoy.display()
+    decoy.swim()
+    decoy.performFly()
+    decoy.performQuack()
+
+
+if __name__ == '__main__':
+    main()
+
