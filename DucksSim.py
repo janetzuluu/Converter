@@ -87,6 +87,27 @@ def img():
     position=my_text.index(INSERT)
     my_text.image_create(position,image=img)
 
+
+
+
+
+
+
+
+
+
+
+
+# OUR ONLY CONVERT BUTTON
+# To pass a function with a vairable, you need to call the lambda keyword
+# Command variable works properly with functions without any arguments passed to it
+# Lambda functions allows python to pass a function with an argument to the command variable
+# we put the index so that when we split() we will not get the ending list bracket ']'
+ #btn3 = tk.Button(root, text='Convert', command=lambda:converting())
+# if uploading file convert
+# TODO create onClick button event; when button clicked -> file gets terminal command
+
+
 # Function for uploading file
 def UploadAction(event=None):
     filename = filedialog.askopenfilename()
