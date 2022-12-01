@@ -1,6 +1,6 @@
 # FLYING
 
-class fly():
+class flyyy():
     def fly(self):
         print("I'm flimming!")
 

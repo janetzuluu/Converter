@@ -1,6 +1,36 @@
 digraph "classes" {
 rankdir=BT
 charset="utf-8"
-"test.ArithmeticOperations" [color="black", fontcolor="black", label="{ArithmeticOperations|sum_ : int\l|get_sum(num1, num2)\l}", shape="record", style="solid"];
-"test.PrintData" [color="black", fontcolor="black", label="{PrintData|data : str\l|print_data(data)\l}", shape="record", style="solid"];
+"test.DecoyDuck" [color="black", fontcolor="black", label="{DecoyDuck|duckType : str\lflyBehavior\lquackBehavior\l|}", shape="record", style="solid"];
+"test.Duck" [color="black", fontcolor="black", label="{Duck|duckType : str\lflyBehavior\lquackBehavior\l|display()\lperformFly()\lperformQuack()\lswim()\l}", shape="record", style="solid"];
+"test.FlyBehavior" [color="black", fontcolor="black", label="{FlyBehavior|\l|fly()\l}", shape="record", style="solid"];
+"test.FlyNoWay" [color="black", fontcolor="black", label="{FlyNoWay|\l|fly()\l}", shape="record", style="solid"];
+"test.FlyWithWings" [color="black", fontcolor="black", label="{FlyWithWings|\l|fly()\l}", shape="record", style="solid"];
+"test.MallardDuck" [color="black", fontcolor="black", label="{MallardDuck|duckType : str\lflyBehavior\lquackBehavior\l|}", shape="record", style="solid"];
+"test.MuteQuack" [color="black", fontcolor="black", label="{MuteQuack|\l|quack()\l}", shape="record", style="solid"];
+"test.Quack" [color="black", fontcolor="black", label="{Quack|\l|quack()\l}", shape="record", style="solid"];
+"test.QuackBehavior" [color="black", fontcolor="black", label="{QuackBehavior|\l|quack()\l}", shape="record", style="solid"];
+"test.RedDuck" [color="black", fontcolor="black", label="{RedDuck|duckType : str\lflyBehavior\lquackBehavior\l|}", shape="record", style="solid"];
+"test.RubberDuck" [color="black", fontcolor="black", label="{RubberDuck|duckType : str\lflyBehavior\lquackBehavior\l|}", shape="record", style="solid"];
+"test.Squeak" [color="black", fontcolor="black", label="{Squeak|\l|quack()\l}", shape="record", style="solid"];
+"test.flyyy" [color="black", fontcolor="black", label="{flyyy|\l|fly()\l}", shape="record", style="solid"];
+"test.DecoyDuck" -> "test.Duck" [arrowhead="empty", arrowtail="none"];
+"test.FlyNoWay" -> "test.FlyBehavior" [arrowhead="empty", arrowtail="none"];
+"test.FlyWithWings" -> "test.FlyBehavior" [arrowhead="empty", arrowtail="none"];
+"test.MallardDuck" -> "test.Duck" [arrowhead="empty", arrowtail="none"];
+"test.MuteQuack" -> "test.QuackBehavior" [arrowhead="empty", arrowtail="none"];
+"test.Quack" -> "test.QuackBehavior" [arrowhead="empty", arrowtail="none"];
+"test.RedDuck" -> "test.Duck" [arrowhead="empty", arrowtail="none"];
+"test.RubberDuck" -> "test.Duck" [arrowhead="empty", arrowtail="none"];
+"test.Squeak" -> "test.QuackBehavior" [arrowhead="empty", arrowtail="none"];
+"test.FlyBehavior" -> "test.Duck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="flyBehavior", style="solid"];
+"test.FlyNoWay" -> "test.DecoyDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="flyBehavior", style="solid"];
+"test.FlyNoWay" -> "test.RubberDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="flyBehavior", style="solid"];
+"test.FlyWithWings" -> "test.MallardDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="flyBehavior", style="solid"];
+"test.FlyWithWings" -> "test.RedDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="flyBehavior", style="solid"];
+"test.MuteQuack" -> "test.DecoyDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="quackBehavior", style="solid"];
+"test.Quack" -> "test.MallardDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="quackBehavior", style="solid"];
+"test.Quack" -> "test.RedDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="quackBehavior", style="solid"];
+"test.QuackBehavior" -> "test.Duck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="quackBehavior", style="solid"];
+"test.Squeak" -> "test.RubberDuck" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="quackBehavior", style="solid"];
 }
